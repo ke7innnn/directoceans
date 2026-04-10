@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useActionState } from 'react';
+import { useState, useActionState, useEffect } from 'react';
 import Image from 'next/image';
 import { submitContactForm } from './actions';
 
@@ -17,8 +17,18 @@ export default function Home() {
     if (!isOpen) setIsOpen(true);
   };
 
+  // Toggle body/container scroll on mobile when form opens
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('form-open');
+    } else {
+      document.body.classList.remove('form-open');
+    }
+    return () => document.body.classList.remove('form-open');
+  }, [isOpen]);
+
   return (
-    <main className="container">
+    <main className={`container ${isOpen ? 'form-open' : ''}`}>
       <div className={`form-wrapper ${isOpen ? 'visible' : ''}`}>
         <div className="form-logo-box" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.5rem', width: '100%', paddingRight: '0.5rem' }}>
           <Image src="/logonew.png" alt="Business Logo" width={400} height={120} style={{ objectFit: 'contain' }} className="responsive-form-logo" />

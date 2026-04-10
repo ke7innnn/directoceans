@@ -23,7 +23,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Prevent scrolling when envelope animates */
+  overflow: hidden;
 }
 
 .container {
@@ -280,8 +280,25 @@ body {
 }
 
 @media (max-width: 768px) {
+  body.form-open {
+    overflow-y: auto;
+  }
+
+  .container.form-open {
+    height: auto;
+    min-height: 100vh;
+  }
+
   .form-wrapper {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
     width: 95%;
+    max-height: none;
+    overflow-y: visible;
+    margin: 2rem auto;
+    padding: 1rem;
   }
 
   .form-row {
