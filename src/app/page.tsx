@@ -20,8 +20,8 @@ export default function Home() {
   return (
     <main className="container">
       <div className={`form-wrapper ${isOpen ? 'visible' : ''}`}>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.5rem', width: '100%', paddingRight: '0.5rem' }}>
-          <Image src="/logonew.png" alt="Business Logo" width={400} height={120} style={{ objectFit: 'contain' }} />
+        <div className="form-logo-box" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.5rem', width: '100%', paddingRight: '0.5rem' }}>
+          <Image src="/logonew.png" alt="Business Logo" width={400} height={120} style={{ objectFit: 'contain' }} className="responsive-form-logo" />
         </div>
         <h1 className="form-header">
           <strong>Fill</strong> <span>your Information</span>
@@ -99,6 +99,29 @@ export default function Home() {
           transition: 'opacity 0.4s ease-in-out'
         }}
       >
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 30,
+          opacity: isOpen ? 0 : 1,
+          pointerEvents: 'none',
+          transition: 'opacity 0.4s ease-in-out',
+          fontSize: '1.2rem',
+          fontWeight: 600,
+          color: '#fff',
+          background: 'rgba(0, 0, 0, 0.45)',
+          backdropFilter: 'blur(4px)',
+          padding: '12px 28px',
+          borderRadius: '50px',
+          animation: 'pulse 2.5s infinite ease-in-out',
+          letterSpacing: '0.05em',
+          textTransform: 'uppercase',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+        }}>
+          Tap to Open
+        </div>
         <div className="envelope-part envelope-top">
           <div style={{ position: 'absolute', top: '5%', right: '3%', zIndex: 20 }}>
             <Image src="/logonew.png" alt="Business Logo" width={300} height={120} style={{ objectFit: 'contain' }} />
