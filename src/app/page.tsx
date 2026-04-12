@@ -111,7 +111,7 @@ export default function Home() {
       >
         <div style={{
           position: 'absolute',
-          bottom: '6%',
+          bottom: '10%',
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 30,
@@ -124,7 +124,7 @@ export default function Home() {
           background: '#4a3f39',
           padding: '10px 24px',
           borderRadius: '30px',
-          animation: 'pulse 2.5s infinite ease-in-out',
+          animation: 'pulse-bottom 2.5s infinite ease-in-out',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
           boxShadow: '0 4px 12px rgba(74, 63, 57, 0.3)',
@@ -133,7 +133,7 @@ export default function Home() {
           Tap to Open
         </div>
         <div className="envelope-part envelope-top">
-          <div style={{ position: 'absolute', top: '5%', right: '3%', zIndex: 20 }}>
+          <div className="envelope-logo-container" style={{ position: 'absolute', top: '5%', right: '3%', zIndex: 20 }}>
             <Image src="/logonew.png" alt="Business Logo" width={300} height={120} style={{ objectFit: 'contain' }} />
           </div>
           <div className="hq-overlay"></div>

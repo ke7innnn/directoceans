@@ -322,12 +322,17 @@ body {
     width: 280px !important;
     height: 85px !important;
   }
+  
+  .envelope-logo-container img {
+    width: 140px !important;
+    height: 60px !important;
+  }
 }
 
-@keyframes pulse {
-  0% { transform: translate(-50%, -50%) scale(1); filter: brightness(1) }
-  50% { transform: translate(-50%, -50%) scale(1.05); filter: brightness(1.2) }
-  100% { transform: translate(-50%, -50%) scale(1); filter: brightness(1) }
+@keyframes pulse-bottom {
+  0% { transform: translateX(-50%) scale(1); filter: brightness(1) }
+  50% { transform: translateX(-50%) scale(1.05); filter: brightness(1.2) }
+  100% { transform: translateX(-50%) scale(1); filter: brightness(1) }
 }
 
 /* Visibility Control */
