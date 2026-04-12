@@ -83,6 +83,15 @@ export default function Home() {
                   name="dob"
                   className="date-overlay-input"
                   required
+                  onClick={(e) => {
+                    try {
+                      if ('showPicker' in HTMLInputElement.prototype) {
+                        (e.target as HTMLInputElement).showPicker();
+                      }
+                    } catch (err) {
+                      // ignore err
+                    }
+                  }}
                   onChange={(e) => setDobValue(e.target.value)}
                 />
               </div>
