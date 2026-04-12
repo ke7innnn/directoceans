@@ -175,6 +175,45 @@ body {
   color: var(--foreground);
 }
 
+/* --- Date overlay (mobile-friendly) --- */
+.date-field-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Styled visible text showing placeholder or selected date */
+.date-placeholder-text {
+  display: block;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1.4;
+}
+
+.date-placeholder-text.has-value {
+  color: var(--foreground);
+}
+
+/* Transparent native date input overlaid — receives all taps */
+.date-overlay-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+}
+
 .form-textarea {
   min-height: 110px;
   resize: vertical;
