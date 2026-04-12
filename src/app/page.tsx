@@ -48,7 +48,7 @@ export default function Home() {
           <Image src="/logonew.png" alt="Business Logo" width={400} height={120} style={{ objectFit: 'contain' }} className="responsive-form-logo" />
         </div>
         <h1 className="form-header">
-          <strong>Write</strong> <span>to Us</span>
+          <strong>Fill</strong> <span>your Details</span>
         </h1>
         <p className="form-subheader">Fill in your details below and we&apos;ll get back to you shortly.</p>
 

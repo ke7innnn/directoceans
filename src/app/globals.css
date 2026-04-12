@@ -208,7 +208,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
+  opacity: 0.01; /* Must NOT be 0 — desktop browsers won't open picker on invisible inputs */
   cursor: pointer;
   border: none;
   padding: 0;
