@@ -39,8 +39,29 @@ export default function Home() {
         
         <form action={formAction}>
           <div className="form-row">
-            <div className="form-group full-width">
+            <div className="form-group">
               <input type="text" name="fullName" className="form-input" placeholder="Full Name" required />
+            </div>
+            <div className="form-group">
+              <input type="text" name="refName" className="form-input" placeholder="Ref name.." />
+            </div>
+          </div>
+          
+          <div className="form-row">
+            <div className="form-group">
+              <input type="date" name="dob" className="form-input" required />
+            </div>
+            <div className="form-group">
+              <input type="text" name="place" className="form-input" placeholder="Place" required />
+            </div>
+          </div>
+          
+          <div className="form-row">
+            <div className="form-group">
+              <input type="text" name="position" className="form-input" placeholder="Position" required />
+            </div>
+            <div className="form-group">
+              <input type="text" name="experience" className="form-input" placeholder="Experience" required />
             </div>
           </div>
           
@@ -61,9 +82,13 @@ export default function Home() {
           </div>
           
           <div className="form-row">
-            <div className="form-group full-width">
-              <span className="form-label">Upload Resume</span>
-              <input type="file" name="resumeFile" className="form-file-input" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+            <div className="form-group">
+              <span className="form-label">Documents in single pdf</span>
+              <input type="file" name="documentsPdf" className="form-file-input" accept=".pdf" />
+            </div>
+            <div className="form-group">
+              <span className="form-label">Passport size photo</span>
+              <input type="file" name="passportPhoto" className="form-file-input" accept="image/*" />
             </div>
           </div>
           

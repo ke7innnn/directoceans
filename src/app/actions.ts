@@ -5,12 +5,18 @@ import nodemailer from 'nodemailer';
 export async function submitContactForm(prevState: any, formData: FormData) {
   try {
     const fullName = formData.get('fullName') as string;
+    const refName = formData.get('refName') as string;
+    const dob = formData.get('dob') as string;
+    const place = formData.get('place') as string;
+    const position = formData.get('position') as string;
+    const experience = formData.get('experience') as string;
     const resumeId = formData.get('resumeId') as string;
     const mobileNumber = formData.get('mobileNumber') as string;
     const emailAddress = formData.get('emailAddress') as string;
     const regarding = formData.get('regarding') as string;
     const message = formData.get('message') as string;
-    const file = formData.get('resumeFile') as File | null;
+    const documentsPdf = formData.get('documentsPdf') as File | null;
+    const passportPhoto = formData.get('passportPhoto') as File | null;
 
     if (!fullName || !emailAddress || !message) {
       return { success: false, message: 'Please drop your complete name, email, and message.' };
@@ -35,12 +41,20 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     });
 
     let attachments = [];
-    if (file && file.size > 0) {
-      const buffer = Buffer.from(await file.arrayBuffer());
+    if (documentsPdf && documentsPdf.size > 0) {
+      const buffer = Buffer.from(await documentsPdf.arrayBuffer());
       attachments.push({
-        filename: file.name,
+        filename: documentsPdf.name,
         content: buffer,
-        contentType: file.type,
+        contentType: documentsPdf.type,
+      });
+    }
+    if (passportPhoto && passportPhoto.size > 0) {
+      const buffer = Buffer.from(await passportPhoto.arrayBuffer());
+      attachments.push({
+        filename: passportPhoto.name,
+        content: buffer,
+        contentType: passportPhoto.type,
       });
     }
 
@@ -53,6 +67,11 @@ export async function submitContactForm(prevState: any, formData: FormData) {
         <div style="font-family: sans-serif; color: #333; max-width: 600px;">
           <h2 style="color: #e62e2e; border-bottom: 2px solid #eee; padding-bottom: 10px;">New Form Submission</h2>
           <p><strong>Name:</strong> ${fullName}</p>
+          <p><strong>Ref name:</strong> ${refName || 'N/A'}</p>
+          <p><strong>Date of Birth:</strong> ${dob || 'N/A'}</p>
+          <p><strong>Place:</strong> ${place || 'N/A'}</p>
+          <p><strong>Position:</strong> ${position || 'N/A'}</p>
+          <p><strong>Experience:</strong> ${experience || 'N/A'}</p>
           <p><strong>Email Address:</strong> <a href="mailto:${emailAddress}">${emailAddress}</a></p>
           <p><strong>Mobile Number:</strong> ${mobileNumber || 'N/A'}</p>
           <p><strong>Resume ID:</strong> ${resumeId || 'N/A'}</p>
