@@ -41,70 +41,109 @@ export default function Home() {
   return (
     <main className={`container ${isOpen ? 'form-open' : ''}`}>
       <div className={`form-wrapper ${isOpen ? 'visible' : ''}`}>
+
+        {/* Header */}
         <div className="form-logo-box" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.5rem', width: '100%', paddingRight: '0.5rem' }}>
           <Image src="/logonew.png" alt="Business Logo" width={400} height={120} style={{ objectFit: 'contain' }} className="responsive-form-logo" />
         </div>
         <h1 className="form-header">
-          <strong>Fill</strong> <span>your Information</span>
+          <strong>Write</strong> <span>to Us</span>
         </h1>
-        
-        <form action={formAction}>
+        <p className="form-subheader">Fill in your details below and we&apos;ll get back to you shortly.</p>
+
+        <form action={formAction} className="form-card">
+
+          {/* Section: Personal Info */}
+          <div className="form-section-label">Personal Information</div>
+
           <div className="form-row">
             <div className="form-group">
-              <input type="text" name="fullName" className="form-input" placeholder="Full Name" required />
+              <label className="form-field-label">Full Name <span className="required-star">*</span></label>
+              <input type="text" name="fullName" className="form-input" placeholder="e.g. John Smith" required />
             </div>
             <div className="form-group">
-              <input type="text" name="refName" className="form-input" placeholder="Ref name.." />
+              <label className="form-field-label">Ref Name</label>
+              <input type="text" name="refName" className="form-input" placeholder="Referred by.." />
             </div>
           </div>
-          
+
           <div className="form-row">
             <div className="form-group">
-              <input type="date" name="dob" className="form-input" required />
+              <label className="form-field-label">Date of Birth <span className="required-star">*</span></label>
+              <input type="date" name="dob" className="form-input form-date-input" required />
             </div>
             <div className="form-group">
-              <input type="text" name="place" className="form-input" placeholder="Place" required />
+              <label className="form-field-label">Place <span className="required-star">*</span></label>
+              <input type="text" name="place" className="form-input" placeholder="City / Country" required />
             </div>
           </div>
-          
+
+          <div className="form-divider" />
+
+          {/* Section: Professional Info */}
+          <div className="form-section-label">Professional Details</div>
+
           <div className="form-row">
             <div className="form-group">
-              <input type="text" name="position" className="form-input" placeholder="Position" required />
+              <label className="form-field-label">Position <span className="required-star">*</span></label>
+              <input type="text" name="position" className="form-input" placeholder="e.g. Marine Engineer" required />
             </div>
             <div className="form-group">
-              <input type="text" name="experience" className="form-input" placeholder="Experience" required />
+              <label className="form-field-label">Experience <span className="required-star">*</span></label>
+              <input type="text" name="experience" className="form-input" placeholder="e.g. 3 years" required />
             </div>
           </div>
-          
+
           <div className="form-row">
             <div className="form-group">
-              <span className="form-label">if applicable</span>
+              <label className="form-field-label">Resume ID <span className="form-label-hint">(if applicable)</span></label>
               <input type="text" name="resumeId" className="form-input" placeholder="Resume ID" />
             </div>
             <div className="form-group">
-              <input type="tel" name="mobileNumber" className="form-input" placeholder="Mobile Number" style={{ marginTop: 'auto' }} />
+              <label className="form-field-label">Mobile Number</label>
+              <input type="tel" name="mobileNumber" className="form-input" placeholder="+91 00000 00000" />
             </div>
           </div>
-          
+
           <div className="form-row">
             <div className="form-group full-width">
-              <input type="email" name="emailAddress" className="form-input" placeholder="Email Address" required />
+              <label className="form-field-label">Email Address <span className="required-star">*</span></label>
+              <input type="email" name="emailAddress" className="form-input" placeholder="you@email.com" required />
             </div>
           </div>
-          
+
+          <div className="form-divider" />
+
+          {/* Section: Documents */}
+          <div className="form-section-label">Documents</div>
+
           <div className="form-row">
             <div className="form-group">
-              <span className="form-label">Documents in single pdf</span>
-              <input type="file" name="documentsPdf" className="form-file-input" accept=".pdf" />
+              <label className="form-field-label">Documents (Single PDF)</label>
+              <label className="file-upload-box">
+                <span className="file-upload-icon">📎</span>
+                <span className="file-upload-text">Choose PDF</span>
+                <input type="file" name="documentsPdf" className="form-file-hidden" accept=".pdf" />
+              </label>
             </div>
             <div className="form-group">
-              <span className="form-label">Passport size photo</span>
-              <input type="file" name="passportPhoto" className="form-file-input" accept="image/*" />
+              <label className="form-field-label">Passport Size Photo</label>
+              <label className="file-upload-box">
+                <span className="file-upload-icon">🖼️</span>
+                <span className="file-upload-text">Choose Image</span>
+                <input type="file" name="passportPhoto" className="form-file-hidden" accept="image/*" />
+              </label>
             </div>
           </div>
-          
+
+          <div className="form-divider" />
+
+          {/* Section: Message */}
+          <div className="form-section-label">Your Message</div>
+
           <div className="form-row">
             <div className="form-group full-width" style={{ position: 'relative' }}>
+              <label className="form-field-label">Regarding</label>
               <select name="regarding" className="form-select" defaultValue="application-status">
                 <option value="application-status">Application Status</option>
                 <option value="technical-support">Technical Support</option>
@@ -115,10 +154,11 @@ export default function Home() {
               <span className="select-arrow">▼</span>
             </div>
           </div>
-          
+
           <div className="form-row">
             <div className="form-group full-width">
-              <textarea name="message" className="form-textarea" placeholder="Type your Message Here" required></textarea>
+              <label className="form-field-label">Message <span className="required-star">*</span></label>
+              <textarea name="message" className="form-textarea" placeholder="Type your message here..." required></textarea>
             </div>
           </div>
 
@@ -131,10 +171,11 @@ export default function Home() {
           </button>
 
           {state?.message && (
-            <p style={{ marginTop: '1rem', color: state.success ? 'green' : 'red', fontWeight: 600 }}>{state.message}</p>
+            <p style={{ marginTop: '1rem', color: state.success ? '#2d6a4f' : '#c0392b', fontWeight: 600, fontSize: '0.95rem' }}>{state.message}</p>
           )}
         </form>
       </div>
+
 
       {/* Envelope Illusion Container */}
       <div 
