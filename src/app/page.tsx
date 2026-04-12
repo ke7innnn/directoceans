@@ -7,11 +7,22 @@ import { submitContactForm } from './actions';
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const [state, formAction, isPending] = useActionState(submitContactForm, null);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 769);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   const handleImageLoad = () => {
     setImagesLoaded((prev) => prev + 1);
   };
+
+  // On mobile only 2 images render (mobile-view), on desktop all 4 render
+  const requiredImages = isMobile ? 2 : 4;
 
   const handleEnvelopeClick = () => {
     if (!isOpen) setIsOpen(true);
@@ -130,36 +141,16 @@ export default function Home() {
         className={`envelope-container ${isOpen ? 'open' : ''}`}
         onClick={handleEnvelopeClick}
         style={{
-          opacity: imagesLoaded >= 4 ? 1 : 0,
+          opacity: imagesLoaded >= requiredImages ? 1 : 0,
           transition: 'opacity 0.4s ease-in-out'
         }}
       >
-        <div style={{
-          position: 'absolute',
-          bottom: '10%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 30,
-          opacity: isOpen ? 0 : 1,
-          pointerEvents: 'none',
-          transition: 'opacity 0.4s ease-in-out',
-          fontSize: '0.85rem',
-          fontWeight: 600,
-          color: '#f9f8f6',
-          background: '#4a3f39',
-          padding: '10px 24px',
-          borderRadius: '30px',
-          animation: 'pulse-bottom 2.5s infinite ease-in-out',
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          boxShadow: '0 4px 12px rgba(74, 63, 57, 0.3)',
-          border: '1px solid rgba(255,255,255,0.1)'
-        }}>
+        <div className="tap-to-open" style={{ opacity: isOpen ? 0 : 1 }}>
           Tap to Open
         </div>
         <div className="envelope-part envelope-top">
           <div className="envelope-logo-container" style={{ position: 'absolute', top: '5%', right: '3%', zIndex: 20 }}>
-            <Image src="/logonew.png" alt="Business Logo" width={300} height={120} style={{ objectFit: 'contain' }} />
+            <Image src="/logonew.png" alt="Business Logo" width={300} height={120} className="envelope-logo" style={{ objectFit: 'contain' }} />
           </div>
           <div className="hq-overlay"></div>
           <div className="mobile-view" style={{position: 'absolute', width: '100%', height: '100%'}}>
