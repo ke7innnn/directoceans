@@ -175,11 +175,13 @@ body {
   color: var(--foreground);
 }
 
-/* --- Date overlay (mobile-friendly) --- */
+/* --- Date overlay (mobile + desktop) --- */
 .date-field-wrapper {
   position: relative;
   width: 100%;
+  cursor: pointer;
 }
+
 
 /* Styled visible text showing placeholder or selected date */
 .date-placeholder-text {
@@ -200,7 +202,7 @@ body {
   color: var(--foreground);
 }
 
-/* Transparent native date input overlaid — receives all taps */
+/* Transparent native date input overlaid — receives all taps/clicks */
 .date-overlay-input {
   position: absolute;
   inset: 0;
@@ -211,10 +213,12 @@ body {
   border: none;
   padding: 0;
   margin: 0;
+  z-index: 2;
   -webkit-appearance: none;
 }
 
 .form-textarea {
+
   min-height: 110px;
   resize: vertical;
 }
