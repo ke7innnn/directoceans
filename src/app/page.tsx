@@ -168,7 +168,7 @@ export default function Home() {
           <div className="hq-overlay"></div>
           <div className="mobile-view" style={{position: 'absolute', width: '100%', height: '100%'}}>
             <Image 
-              src="/card-mobile/down part.jpg" 
+              src="/card-mobile/down part-new.png" 
               alt="Envelope Bottom Body Mobile" 
               fill
               sizes="100vw"
@@ -181,7 +181,7 @@ export default function Home() {
           </div>
           <div className="pc-view" style={{position: 'absolute', width: '100%', height: '100%'}}>
             <Image 
-              src="/card-pc/down part.jpg" 
+              src="/card-pc/down part-new.png" 
               alt="Envelope Bottom Body PC" 
               fill
               sizes="100vw"
