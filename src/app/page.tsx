@@ -111,24 +111,24 @@ export default function Home() {
       >
         <div style={{
           position: 'absolute',
-          top: '50%',
+          bottom: '6%',
           left: '50%',
-          transform: 'translate(-50%, -50%)',
+          transform: 'translateX(-50%)',
           zIndex: 30,
           opacity: isOpen ? 0 : 1,
           pointerEvents: 'none',
           transition: 'opacity 0.4s ease-in-out',
-          fontSize: '1.2rem',
+          fontSize: '0.85rem',
           fontWeight: 600,
-          color: '#fff',
-          background: 'rgba(0, 0, 0, 0.45)',
-          backdropFilter: 'blur(4px)',
-          padding: '12px 28px',
-          borderRadius: '50px',
+          color: '#f9f8f6',
+          background: '#4a3f39',
+          padding: '10px 24px',
+          borderRadius: '30px',
           animation: 'pulse 2.5s infinite ease-in-out',
-          letterSpacing: '0.05em',
+          letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+          boxShadow: '0 4px 12px rgba(74, 63, 57, 0.3)',
+          border: '1px solid rgba(255,255,255,0.1)'
         }}>
           Tap to Open
         </div>
