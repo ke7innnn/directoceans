@@ -8,6 +8,8 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [dobType, setDobType] = useState<'text' | 'date'>('text');
+  const [dobValue, setDobValue] = useState('');
   const [state, formAction, isPending] = useActionState(submitContactForm, null);
 
   useEffect(() => {
@@ -70,7 +72,17 @@ export default function Home() {
           <div className="form-row">
             <div className="form-group">
               <label className="form-field-label">Date of Birth <span className="required-star">*</span></label>
-              <input type="date" name="dob" className="form-input form-date-input" required />
+              <input
+                type={dobType}
+                name="dob"
+                className="form-input form-date-input"
+                placeholder="DD / MM / YYYY"
+                value={dobValue}
+                required
+                onFocus={() => setDobType('date')}
+                onBlur={() => { if (!dobValue) setDobType('text'); }}
+                onChange={(e) => setDobValue(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <label className="form-field-label">Place <span className="required-star">*</span></label>
